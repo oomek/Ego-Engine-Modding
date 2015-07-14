@@ -168,9 +168,13 @@ namespace EgoJpkExtractor
                 {
                     if (entriesFill.ContainsKey(info.Name) == true)
                     {
-                        if (entriesFill[info.Name] != 0)
+                        if (entriesFill[info.Name] > 0)
                         {
                             b.Write(new byte[entriesFill[info.Name]]);
+                        }
+                        if (entriesFill[info.Name] < 0)
+                        {
+                            b.Seek(entriesFill[info.Name], SeekOrigin.Current);
                         }
                     }
                     b.Write(info.File);
